@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Playandlearn</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" style="padding-top: 0px;" href="/">LearnToPlay</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      
+      <li class="nav-item active">
+        <a class="nav-link"  href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      
+      <li class="nav-item">
+            <a class="nav-link"  style=" padding-left : 15px;" href="<%= "/synonyms/start"%>">Synonyms</a>
+      </li>
+          <li class="nav-item">
+            <a class="nav-link"  style=" padding-left : 15px;" href="<%= "/quiz/start"%>">General Quiz</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  style=" padding-left : 630px;" href="/signup">Sign Up</a>
+      </li>
+
+       <li class="nav-item">
+        <a class="nav-link"  style=" padding-left : 60px;" href="<%= new_session_path%>">Log In</a>
+       </li>
+    
+    </ul>
+    <form class="form-inline my-2 my-lg-0" style="position: absolute; top: 8px; right: 16px;  font-size: 18px;}">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+  
+</nav>
+
+<div class ="container">
+  <% if flash[:success]%>
+    <div class = "alert alert-success">
+      <%flash[:success]%>
+      <% flash.each do |key, value| %>
+      <div class="flash <%= key %>"><%= value %></div>
+<% end %> 
+    </div>
+  <%end%>  
+
+   <% if flash[:danger]%>
+    <div class = "alert alert-danger">
+      <%flash[:danger]%>
+      <% flash.each do |key, value| %>
+      <div class="flash <%= key %>"><%= value %></div>
+<% end %> 
+    </div>
+  <%end%>
+</div>
+    <%= yield %>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  </body>
+
+</html>
